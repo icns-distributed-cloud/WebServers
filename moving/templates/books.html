@@ -1,0 +1,109 @@
+<html>
+<body>
+<h1>WELCOME TO CLOUD-BASED SELF-DRIVING CAR</h1>
+
+<ol>
+<form action="{{ url_for('showBooks')}}" method="post">
+    <input type="submit" value="Cancel" name="action" />
+</form>
+</ol>
+
+<ol>
+<table border="1" width="400">
+    {% for book in books %}
+        {% if book.id == 1 %}
+            <tr>
+                <th>DRINK </th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% for book in books %}
+        {% if ".com" in book.title %}
+        {% else %}
+            {% if (("Coca" in book.title) or ("Spite" in book.title) or ("Pepsi" in book.title))  %}
+                <tr height="50" width="1800">
+                    <td> <form action="{{url_for('deleteBook', book_id = book.id )}}"> <button>{{ book.title }}</button></form></td>
+                    <td width="100" style = " border-style: solid;     font-size: 1em;     text-align: left; color:green; ">  {{ book.genre }}  </td>
+                </tr>
+                {% endif %}
+        {% endif %}
+    {% endfor %}
+</table>
+
+<table border="1" width="400">
+    {% for book in books %}
+        {% if book.id == 1 %}
+            <tr>
+                <th>FOOD </th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% for book in books %}
+        {% if ".com" in book.title %}
+        {% else %}
+            {% if (("Noodle" in book.title) or ("Rice" in book.title) or ("Hamburger" in book.title))  %}
+                <tr height="50" width="1800">
+                    <td> <form action="{{url_for('deleteBook', book_id = book.id )}}"> <button>{{ book.title }}</button></form></td>
+                    <td width="100" style = " border-style: solid;     font-size: 1em;     text-align: left; color:green; ">  {{ book.genre }}  </td>
+                </tr>
+                {% endif %}
+        {% endif %}
+    {% endfor %}
+</table>
+
+
+<table border="1" width="400">
+    {% for book in books %}
+        {% if book.id == 1 %}
+            <tr>
+                <th>Cigarette </th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% for book in books %}
+        {% if ".com" in book.title %}
+        {% else %}
+            {% if (("Type 1" in book.title) or ("Type 2" in book.title) or ("Type 3" in book.title))  %}
+                <tr height="50" width="1800">
+                    <td> <form action="{{url_for('deleteBook', book_id = book.id )}}"> <button>{{ book.title }}</button></form></td>
+                    <td width="100" style = " border-style: solid;     font-size: 1em;     text-align: left; color:green; ">  {{ book.genre }}  </td>
+                </tr>
+                {% endif %}
+        {% endif %}
+    {% endfor %}
+</table>
+
+<table border="1" width="400">
+    {% for book in books %}
+        {% if book.id == 1 %}
+            <tr>
+                <th>ROOM </th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% for book in books %}
+        {% if ".com" in book.title %}
+        {% else %}
+            {% if "." in book.title %}
+            {% else %}
+                {% if (("Coca" in book.title) or ("Spite" in book.title) or ("Pepsi" in book.title))  %}
+                {% else %}
+                    {% if (("Noodle" in book.title) or ("Rice" in book.title) or ("Hamburger" in book.title))  %}
+                    {% else %}
+                        {% if (("Type 1" in book.title) or ("Type 2" in book.title) or ("Type 3" in book.title))  %}
+                        {% else %}
+                            <tr height="50" width="1800">
+                                <td> <form action="{{url_for('deleteBook', book_id = book.id )}}"> <button>{{ book.title }}</button></form></td>
+                                <td width="100" style = " border-style: solid;     font-size: 1em;     text-align: left; color:green; ">  {{ book.genre }}  </td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</table>
+</form>
+</ol>
+</body>
+</html>
