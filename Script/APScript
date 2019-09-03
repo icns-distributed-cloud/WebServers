@@ -1,0 +1,42 @@
+sudo apt install dnsmasq hostapd
+sudo systemctl stop dnsmasq
+sudo systemctl stop hostapd
+cat >> /etc/dhcpcd.conf <<EOF
+interface wlan0
+    static ip_address=192.168.6.1/24
+    nohook wpa_supplicant
+EOF
+sudo service dhcpcd restart
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
+cat >> /etc/dnsmasq.conf <<EOF
+interface=wlan0
+dhcp-range=192.168.6.2,192.168.6.20,255.255.255.0,24h
+EOF
+sudo systemctl reload dnsmasq
+cat >> /etc/hostapd/hostapd.conf<<EOF
+interface=wlan0
+driver=nl80211
+ssid=EdgeCloud2
+hw_mode=g
+channel=7
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=iloveicns
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+EOF
+cat >> /etc/default/hostapd <<EOF
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+EOF
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
+sudo sed -i '/net.ipv4.ip_forward=1/s/^#//g' /etc/sysctl.conf
+sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+sudo sed -i "\$i $(echo 'iptables-restore < /etc/iptables.ipv4.nat')" /etc/rc.local
+sudo reboot
