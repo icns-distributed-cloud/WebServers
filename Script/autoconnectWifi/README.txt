@@ -65,7 +65,7 @@ Then run the connectWifi.py, before that remember to install module "wifi" by cm
 sudo python connectWifi.py
 
 
-5. Notice: Check
+5. Notice: If there's error, check
 
 -----Configuration of /etc/network/interfaces------
 
