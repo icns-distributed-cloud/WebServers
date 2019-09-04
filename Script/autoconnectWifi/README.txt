@@ -1,6 +1,6 @@
 Switching between known Wifi networks
 
-File /home/Pi/Desktop/DistCloud
+1. File /home/Pi/Desktop/DistCloud
 
 country=GB  
 
@@ -18,7 +18,7 @@ psk="qwer1234"
 }
 
 
-File /home/Pi/Desktop/icnslab
+2. File /home/Pi/Desktop/icnslab
 
 country=GB   
 
@@ -35,7 +35,7 @@ psk="iloveicns"
 
 }
 
-Then create a script for switching between networks, create file switchwifi by cmd: sudo nano switchwifi
+3. Then create a script for switching between networks, create file switchwifi by cmd: sudo nano switchwifi
 
 #!/bin/bash
 
@@ -58,16 +58,16 @@ iwconfig wlan0
 
 ifconfig wlan0
 
-Give permission to file switchwifi
+4. Give permission to file switchwifi
 sudo chmod +x switchwifi
 
 Then run the connectWifi.py, before that remember to install module "wifi" by cmd: sudo pip install wifi
 sudo python connectWifi.py
 
 
-Notice: Check
+5. Notice: Check
 
-Configure of /etc/network/interfaces
+-----Configuration of /etc/network/interfaces------
 
 # interfaces(5) file used by ifup(8) and ifdown(8)
 
@@ -88,7 +88,7 @@ iface wlan0 inet manual
 
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
-Configure of /etc/wpa_supplicant/wpa_supplicant.conf
+------Configuration of /etc/wpa_supplicant/wpa_supplicant.conf----
 
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 
