@@ -3,5 +3,3 @@
 192.168.6.1: EdgeCloud3
 
 192.168.10.1: CoreCloud
-
-username: pi, password: iloveicns
