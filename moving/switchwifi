@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo cp /home/pi/Documents/moving/$1 /etc/wpa_supplicant/wpa_supplicant.conf
+
+ifdown wlan0
+dhclient -r wlan0
+ifup wlan0
+dhclient -v wlan0
+
+echo
+iwconfig wlan0
+ifconfig wlan0
