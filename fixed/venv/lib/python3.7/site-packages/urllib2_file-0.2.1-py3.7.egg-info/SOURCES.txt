@@ -1,0 +1,7 @@
+README
+setup.py
+urllib2_file.py
+urllib2_file.egg-info/PKG-INFO
+urllib2_file.egg-info/SOURCES.txt
+urllib2_file.egg-info/dependency_links.txt
+urllib2_file.egg-info/top_level.txt
